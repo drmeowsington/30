@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+		<link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+		<title>30!</title>
+		<style>
+
+			@-webkit-keyframes wiggle { 0% { left: 0; } 25% { left: -10%; } 50% { left : 0; } 75% { left: 10%; } 100% { left: 0; } }
+			@-moz-keyframes wiggle { 0% { left: 0; } 25% { left: -10%; } 50% { left : 0; } 75% { left: 10%; } 100% { left: 0; } }
+			@-o-keyframes wiggle { 0% { left: 0; } 25% { left: -10%; } 50% { left : 0; } 75% { left: 10%; } 100% { left: 0; } }
+			@keyframes wiggle { 0% { left: 0; } 25% { left: -10%; } 50% { left : 0; } 75% { left: 10%; } 100% { left: 0; } }
+
+			@-webkit-keyframes wiggle2 { 0% { left: -10%; } 25% { left: -20%; } 50% { left : -10%; } 75% { left: 0%; } 100% { left: -10%; } }
+			@-moz-keyframes wiggle2 { 0% { left: -10%; } 25% { left: -20%; } 50% { left : -10%; } 75% { left: 0%; } 100% { left: -10%; } }
+			@-o-keyframes wiggle2 { 0% { left: -10%; } 25% { left: -20%; } 50% { left : -10%; } 75% { left: 0%; } 100% { left: -10%; } }
+			@keyframes wiggle2 { 0% { left: -10%; } 25% { left: -20%; } 50% { left : -10%; } 75% { left: 0%; } 100% { left: -10%; } }
+
+			@-webkit-keyframes colorChange { 0% { left: -10%; } 25% { left: -20%; } 50% { left : -10%; } 75% { left: 0%; } 100% { left: -10%; } }
+			@-moz-keyframes colorChange { 0% { color: #ffb4c1; } 50% { color: #fffc00;  transform: scale(1.1); } 100% { color: #ffb4c1; }  }
+			@-o-keyframes colorChange { 0% { color: #ffb4c1; } 50% { color: #fffc00; transform: scale(1.1); } 100% { color: #ffb4c1; }  }
+			@keyframes colorChange { 0% { color: #ffb4c1; } 50% { color: #fffc00; transform: scale(1.1); } 100% { color: #ffb4c1; }  }
+
+			html {
+				background: #ffc0cb;
+			}
+
+			h1 {
+				position: fixed;
+				font-family: 'Chewy', cursive;
+				font-size: 100px;
+				text-align: center;
+				margin: 0;
+				width: 100%;
+				left: 0;
+				top: 40px;
+				padding: 0;
+				color: #ffb4c1;
+				z-index: 99;
+
+				-webkit-animation: colorChange 1s infinite linear;
+  				-moz-animation:    colorChange 1s infinite linear;
+  				-o-animation:      colorChange 1s infinite linear;
+  				animation:         colorChange 1s infinite linear;
+			}
+
+			#cat {
+				visibility: hidden;
+				position: fixed;
+				width: 40%;
+				left: 30%;
+				top: 30%;
+				z-index: 10;
+			}
+			#flags {
+				position: fixed;
+				width: 120%;
+				left: 0;
+				bottom: 0;
+
+				-webkit-animation: wiggle2 1s infinite linear;
+  				-moz-animation:    wiggle2 1s infinite linear;
+  				-o-animation:      wiggle2 1s infinite linear;
+  				animation:         wiggle2 1s infinite linear;
+			}
+			#confetti {
+				position: fixed;
+				top: -10%;
+				width: 100%;
+
+				-webkit-animation: wiggle 3s infinite linear;
+  				-moz-animation:    wiggle 3s infinite linear;
+  				-o-animation:      wiggle 3s infinite linear;
+  				animation:         wiggle 3s infinite linear;
+			}
+
+			#balloons {
+				position: fixed;
+				width: 80%;
+				left: 10%;
+				bottom: -50%;
+				z-index: 11;
+
+				-webkit-transition: bottom 1.25s linear 1s;
+			    -moz-transition: bottom 1.25s linear 1s;
+			    -o-transition: bottom 1.25s linear 1s;
+			    transition: bottom 1.25s linear 1s;
+			}
+
+			.active {
+				bottom: 30% !important;
+			}
+
+		</style>
+	</head>
+	<body>
+
+		<h1>30!</h1>
+		
+		<img id="confetti" src="confetti1.svg"/>
+		<img id="flags" src="flags.svg"/>
+		<img id="cat" src="cat.svg"/>
+
+		<img id="balloons" src="balloons.svg"/>
+
+		<script type="text/javascript">
+			
+			var balloons = document.getElementById('balloons');
+			var cat = document.getElementById('cat');
+			var visible = false;
+
+			setInterval(function() {
+				if (balloons.className.indexOf('active') >= 0) {
+					balloons.classList.remove('active');
+					cat.style.visibility = visible ? 'hidden' : 'visible';
+					visible = !visible;
+				} else {
+					balloons.classList.add('active');
+				}
+			}, 2500);
+
+			cat.addEventListener('click', function() {
+				// TODO
+			});
+
+		</script>
+	</body>
+</html>
+
+
+
+
