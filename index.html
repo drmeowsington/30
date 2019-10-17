@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 		<link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 		<title>30!</title>
 		<style>
 
@@ -34,7 +35,7 @@
 				margin: 0;
 				width: 100%;
 				left: 0;
-				top: 40px;
+				top: 20px;
 				padding: 0;
 				color: #ffb4c1;
 				z-index: 99;
@@ -43,6 +44,12 @@
   				-moz-animation:    colorChange 1s infinite linear;
   				-o-animation:      colorChange 1s infinite linear;
   				animation:         colorChange 1s infinite linear;
+			}
+
+			h2 {
+				padding: 0;
+			    margin: 0;
+			    margin-bottom: 20px;
 			}
 
 			#cat {
@@ -92,22 +99,47 @@
 				bottom: 30% !important;
 			}
 
+			.scene1 {
+				display: none;
+			}
+
+			.scene2 {
+				display: none;
+				font-family: 'Chewy', cursive;
+				font-family: 'Open Sans', sans-serif;
+				color: #6b0013;
+				padding: 24px;
+			}
+
+			.scene-active {
+				display: inline-block;
+			}
+
 		</style>
 	</head>
 	<body>
 
-		<h1>30!</h1>
-		
-		<img id="confetti" src="confetti1.svg"/>
-		<img id="flags" src="flags.svg"/>
-		<img id="cat" src="cat.svg"/>
+		<div class="scene1">
+			<h1>30!</h1>
+			<img id="confetti" src="confetti1.svg"/>
+			<img id="flags" src="flags.svg"/>
+			<img id="cat" src="cat.svg"/>
+			<img id="balloons" src="balloons.svg"/>
+		</div>
 
-		<img id="balloons" src="balloons.svg"/>
+		<div class="scene2">
+			<h2>Sterkwater: Fort Lunet</h2>
+			Pop-up restaurant <a href="https://www.sterkwater.nl">SterkWater</a> is een tijdelijk restaurant dat steeds op een bijzondere plek langs de Nieuwe Hollandse Waterlinie opent. Dit betekent dat iedere locatie een unieke beleving is, op een plek waar we alles voor een beperkte tijd opbouwen. Soms zetten we een kas neer, soms eten we in een fort, soms eten we in een loods op het fort. We zorgen voor comfort, maar zitten wel op plekken die normaalgesproken geen restaurant zijn. We nemen je ook mee over het fort, makkelijke schoenen is aan te raden. Het verhaal dat we vertellen en het menu dat we serveren is afgestemd op de locatie.
+			<br><br>
+			Onbekend maakte onbemind, maar wie eenmaal de dichtbegroeide toegangsweg oploopt, wil meer weten van dit verborgen Lunet. En wist je dat de Kringenwet voorschreef dat het landschap rond het fort leeg moest blijven? Of zo bebouwd dat het snel kon worden afgebroken. Dit schootsveld herbergt veel bijzondere producenten. Wat te denken van de Hooierij, de Fungi Factory en de Veldkeuken. Deze krijgen allemaal een speciaal plekje op het menu…
+		</div>
 
 		<script type="text/javascript">
 			
 			var balloons = document.getElementById('balloons');
 			var cat = document.getElementById('cat');
+			var sceneOne = document.getElementsByClassName('scene1')[0];
+			var sceneTwo = document.getElementsByClassName('scene2')[0];
 			var visible = false;
 
 			setInterval(function() {
@@ -120,8 +152,11 @@
 				}
 			}, 2500);
 
+			sceneOne.classList.add('scene-active');
+
 			cat.addEventListener('click', function() {
-				// TODO
+				sceneOne.classList.remove('scene-active');
+				sceneTwo.classList.add('scene-active');
 			});
 
 		</script>
